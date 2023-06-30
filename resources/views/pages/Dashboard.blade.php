@@ -12,4 +12,6 @@
     </div>
     <!-- End Page Title -->
 </div>
+
+<div id="dashboard"></div>
 @endsection
