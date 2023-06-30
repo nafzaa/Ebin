@@ -39,6 +39,6 @@ Route::get('/home', [DashboardController::class, 'index'])->name('home')->middle
 // application
 Route::get('/application', [ApplicationController::class, 'index'])->name('application')->middleware('auth');
 
+// deliverybin
 Route::get('/deliverybin', [DeliveryBinController::class, 'index'])->name('deliverybin');
-
 Route::get('/databin/{id}', [DataBinController::class, 'databin'])->name('databin');
