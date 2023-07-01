@@ -1,40 +1,42 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-const TotalBin = () => {
-    const [totalbin, setTotalbin] = useState(0)
-    const [instock, setInstock] = useState(0)
-    const [outstock, setOutstock] = useState(0)
+const TotalApplication = () => {
+    const [totalApplication, setTotalapplication] = useState(0)  
+    const [totalApplicationByScheme1, setTotalApplicationByScheme1] = useState(0)
+    const [totalApplicationByScheme2, setTotalApplicationByScheme2] = useState(0)
 
-    const GetTotalBin = async(url) => {
-            await axios.get(url).then((response)=>{
-                setTotalbin(response.data)
-            }).catch((e)=>{
-                console.log(e)
-            })
-    }
-    const GetInStock = async(url) => {
+    const GetTotalApplication = async(url) => {
         await axios.get(url).then((response)=>{
-            setInstock(response.data)
+            setTotalapplication(response.data)
         }).catch((e)=>{
             console.log(e)
         })
     }
-    const GetOutStock = async(url) => {
+    const GetTotalApplicationByScheme1 = async(url) => {
         await axios.get(url).then((response)=>{
-            setOutstock(response.data)
-        }).catch()
+            setTotalApplicationByScheme1(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GrtTotalApplicationByScheme2 = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalApplicationByScheme2(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
     }
 
     useEffect(()=>{
-        GetTotalBin('/home/bin/count')
-        GetInStock('/home/bin/instock/count')
-        GetOutStock('/home/bin/outstock/count')
-    }, [])
+        GetTotalApplication('/home/application/count')
+        GetTotalApplicationByScheme1('/home/application/scheme1/count')
+        GrtTotalApplicationByScheme2('/home/application/scheme2/count')
+    })
 
   return (
     <>
-    {/* Total Bin */}
+    {/* TOTAL APPLICATION */}
     <div className="col-xxl-4 col-xl-12">
         <div className="card info-card customers-card">
             <div className="filter">
@@ -68,11 +70,11 @@ const TotalBin = () => {
             </h5>
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                <i className="bi bi-cart" />
+                <i className="bi bi-file-text" />
                 </div>
                 <div className="ps-3">
                 <h6>
-                    {totalbin}
+                    {totalApplication}
                 </h6>
                 {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
                 <span className="text-muted small pt-2 ps-1">decrease</span> */}
@@ -82,9 +84,9 @@ const TotalBin = () => {
         </div>
     </div>
 
-    {/* In Stock */}
-    <div className="col-xxl-4 col-md-6">
-        <div className="card info-card sales-card">
+    {/* SCHEME 1 */}
+    <div className="col-xxl-4 col-xl-12">
+        <div className="card info-card customers-card">
             <div className="filter">
             <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -112,25 +114,27 @@ const TotalBin = () => {
             </div>
             <div className="card-body">
             <h5 className="card-title">
-                Dalam Stok <span>| Hari Ini</span>
+                PHKT 01 <span>| Tahun Ini</span>
             </h5>
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                <i className="bi bi-cart" />
+                <i className="bi bi-file-text" />
                 </div>
                 <div className="ps-3">
-                <h6>{instock}</h6>
-                {/* <span className="text-success small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">increase</span> */}
+                <h6>
+                    {totalApplicationByScheme1}
+                </h6>
+                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
+                <span className="text-muted small pt-2 ps-1">decrease</span> */}
                 </div>
             </div>
             </div>
         </div>
     </div>
 
-    {/* Out Stock */}
-    <div className="col-xxl-4 col-md-6">
-        <div className="card info-card revenue-card">
+    {/* SCHEME 2 */}
+    <div className="col-xxl-4 col-xl-12">
+        <div className="card info-card customers-card">
             <div className="filter">
             <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -158,16 +162,18 @@ const TotalBin = () => {
             </div>
             <div className="card-body">
             <h5 className="card-title">
-                Stok Keluar <span>| Bulan Ini</span>
+                PHKT 02 <span>| Tahun Ini</span>
             </h5>
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                <i className="bi bi-cart" />
+                <i className="bi bi-file-text" />
                 </div>
                 <div className="ps-3">
-                <h6>{outstock}</h6>
-                {/* <span className="text-success small pt-1 fw-bold">8%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">increase</span> */}
+                <h6>
+                    {totalApplicationByScheme2}
+                </h6>
+                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
+                <span className="text-muted small pt-2 ps-1">decrease</span> */}
                 </div>
             </div>
             </div>
@@ -177,4 +183,4 @@ const TotalBin = () => {
   )
 }
 
-export default TotalBin
+export default TotalApplication

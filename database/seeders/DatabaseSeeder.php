@@ -24,8 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NegeriSeeder::class,
             UserSeeder::class,
-            DataBinSeeder::class,
-            DataBinStatusSeeder::class
+            DataBinSeeder::class
         ]);
     }
 }

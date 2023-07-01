@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('id_tong');
             $table->string('no_siri_tong');
             $table->string('jenis_tong');
+            $table->unsignedBigInteger('status');
             $table->timestamps();
         });
     }
