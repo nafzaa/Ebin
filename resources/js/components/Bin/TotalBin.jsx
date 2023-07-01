@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Total = () => {
+const TotalBin = () => {
   return (
     <div class="col-xxl-4 col-xl-12">
         <div class="card info-card customers-card">
@@ -34,4 +34,4 @@ const Total = () => {
   )
 }
 
-export default Total
+export default TotalBin
