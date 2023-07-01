@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             NegeriSeeder::class,
             UserSeeder::class,
             DataBinSeeder::class,
+            DataBinStatusSeeder::class
         ]);
     }
 }
