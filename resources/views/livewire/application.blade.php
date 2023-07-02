@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label for="poskode" class="form-label">Poskode</label>
+                                            <label for="poskode" class="form-label">Poskod</label>
                                             <input type="text" class="form-control" id="poskode" wire:model='poskode'>
                                         </div>
                                     </div>
