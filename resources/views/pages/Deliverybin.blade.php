@@ -73,6 +73,8 @@
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    <script src="{{ asset('assets/js/webcam.min.js') }}"></script>
+
     @livewireScripts
 
     @stack('js')

@@ -289,7 +289,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Scan Qr Code</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -333,8 +333,62 @@
                             </div>
                         </div>
 
-                        {{-- button hantar center --}}
+                        {{-- gambar bukti penerimaan dengan buka camera --}}
                         <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="gambarBuktiPenerimaan" class="form-label">Gambar Bukti
+                                        Penerimaan (Jika Perlu)</label>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="mb-3">
+                                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                                data-bs-target="#cameraModal" onclick="camera()">
+                                                <i class="ri-camera-line"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- gambar bukti penerimaan --}}
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="mb-3">
+                                            <div id="snap" style="width: 100%; padding: 10px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- modal camera --}}
+                        <div wire:ignore class="modal fade" id="cameraModal" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Camera</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex justify-content-center">
+                                            <div id="camera"></div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="takeSnap" class="btn btn-primary"
+                                            data-bs-dismiss="modal">Take
+                                            Picture</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {{-- button hantar center --}}
+                        <div class=" row mt-3">
                             <div class="col-md-12">
                                 <div class="d-flex justify-content-center">
                                     <div class="mb-3">
@@ -368,6 +422,7 @@
             @this.set('jumlah_tong', "1");
 
         })
+
     })
 
 
@@ -428,6 +483,35 @@
             title: message
         })
     })
+
+    // camera
+    function camera() {
+        // open camere laptop for capture image width center
+        Webcam.set({
+            width: 400,
+            height: 400,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+
+        Webcam.attach('#camera');
+
+        // take snap
+
+        document.getElementById('takeSnap').addEventListener('click', function () {
+            Webcam.snap(function (data_uri) {
+                document.getElementById('snap').innerHTML = '<img src="' + data_uri + '"/>';
+                var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+            });
+
+            Webcam.reset();
+        });
+
+        // close modal camera
+        $('#cameraModal').on('hidden.bs.modal', function () {
+            Webcam.reset();
+        })
+    }
 </script>
 
 @endpush

@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class DeliveryBin extends Component
 {
-    public $statePage = 0;
+    public $statePage = 2;
 
     public $nama_pekerja;
     public $no_pekerja;
@@ -38,6 +38,7 @@ class DeliveryBin extends Component
     public $no_siri_tongL;
     public $Kategori_penerima;
     public $catatan;
+    public $image_bukti;
 
     public $datatable = [];
     public $dataNegeri = [];
