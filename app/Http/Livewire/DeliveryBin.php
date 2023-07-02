@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Application;
+use App\Models\DataBin;
 use App\Models\Negeri;
 use Livewire\Component;
 
@@ -122,6 +123,13 @@ class DeliveryBin extends Component
         $dataApplication->status_penerimaan = 1;
 
         $dataApplication->save();
+
+        // update status tong
+        $datatong = DataBin::where('no_siri_tong', $this->no_siri_tongB)->first();
+
+        $datatong->status = 2;
+
+        $datatong->save();
 
         // clear form
         $this->skim = "";
