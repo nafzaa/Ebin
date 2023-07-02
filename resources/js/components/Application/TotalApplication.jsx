@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 const TotalApplication = () => {
     const [totalApplication, setTotalapplication] = useState(0)
+    const [berjayaDihantar, setBerjayaDihantar] = useState(0)
+    const [dalamProses, setDalamProses] = useState(0)
     const [totalApplicationByScheme1, setTotalApplicationByScheme1] = useState(0)
     const [totalApplicationByScheme2, setTotalApplicationByScheme2] = useState(0)
     const [totalApplicationByScheme3, setTotalApplicationByScheme3] = useState(0)
@@ -31,6 +33,16 @@ const TotalApplication = () => {
             setTotalapplication(response.data)
         }).catch((e)=>{
             console.log(e)
+        })
+    }
+    const GetBerjayaDihantar = async(url) => {
+        await axios.get(url).then((response)=>{
+            setBerjayaDihantar(response.data)
+        })
+    }
+    const GetDalamProses = async(url) => {
+        await axios.get(url).then((response)=>{
+            setDalamProses(response.data)
         })
     }
     const GetTotalApplicationByScheme1 = async(url) => {
@@ -184,6 +196,8 @@ const TotalApplication = () => {
 
     useEffect(()=>{
         GetTotalApplication('/home/application/count')
+        GetBerjayaDihantar('/home/application/delivered/count')
+        GetDalamProses('/home/application/dalamproses/count')
         GetTotalApplicationByScheme1('/home/application/scheme1/count')
         GetTotalApplicationByScheme2('/home/application/scheme2/count')
         GetTotalApplicationByScheme3('/home/application/scheme3/count')
@@ -219,13 +233,19 @@ const TotalApplication = () => {
                 Total {/* <span>| Tahun Ini</span> */}: {totalApplication}
                 {/* ({totalApplicationCreatedAt}) */}
             </h5>
+            <h5 className="card-title">
+                Selesai : {berjayaDihantar}
+            </h5>
+            <h5 className="card-title">
+                Dalam Proses : {dalamProses}
+            </h5>
         </label>
     </div>
     
     <h5 className="card-title text-center">SKIM</h5>
     {/* SCHEME 1 PHKT01 */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card revenue-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -274,7 +294,7 @@ const TotalApplication = () => {
 
     {/* SCHEME 2 PHKT02 */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card revenue-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -325,7 +345,7 @@ const TotalApplication = () => {
 
     {/* SCHEME 3 PHKT03 */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card revenue-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -375,7 +395,7 @@ const TotalApplication = () => {
     <h5 className="card-title text-center">PREMIS</h5>
     {/* PREMISE 1 KEDAI */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -424,7 +444,7 @@ const TotalApplication = () => {
 
     {/* PREMISE 2 RUMAH */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -473,7 +493,7 @@ const TotalApplication = () => {
 
     {/* PREMISE 3 RUMAH KAMPUNG */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />

@@ -71,6 +71,16 @@ class DashboardController extends Controller
         $applicationCount = Application::count();
         return $applicationCount;
     }
+    public function delivered()
+    {
+        $deliveredCount = Application::where('status_penerimaan', 1)->count();
+        return $deliveredCount;
+    }
+    public function dalamproses()
+    {
+        $dalamProsesCount = Application::whereNot('status_penerimaan', 1)->count();
+        return $dalamProsesCount;
+    }
     public function applicationtotalbyscheme1()
     {
         // PHKT 01
