@@ -34,7 +34,7 @@ class DashboardController extends Controller
     public function bininstocktotal()
     {
         // Status 2 In Stock
-        $bininstocktotal = DataBin::count() - DataBin::where('status', 3)->count();
+        $bininstocktotal = DataBin::count() - DataBin::where('status', 2)->count();
         return($bininstocktotal);
     }
     public function binoutstocktotal()
