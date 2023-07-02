@@ -9,14 +9,17 @@ import TotalCost from "./Cost/TotalCost";
 import DeliveryCost from "./Cost/DeliveryCost";
 import SavingCost from "./Cost/SavingCost";
 import TotalApplication from "./Application/TotalApplication";
+import recyclebin from '../../../public/assets/img/recyclebin.png';
+import document from '../../../public/assets/img/document.png';
 
 const Dashboard = () => {
     return(
     <div>
         {/* BIN */}
         <div className="card">
-            <div className="m-4">
+            <div className="mt-4 mx-4 d-flex justify-content-between">
                 <h2>Tong</h2>
+                <img src={recyclebin} alt="Recycle Bin" style={{width:"5%"}} />
             </div>
             <section className="section dashboard">
                 <div className="row m-2">
@@ -27,7 +30,10 @@ const Dashboard = () => {
 
         {/* PERMOHONAN */}
         <div className="card">
-        <h2 className="m-4">Permohonan</h2>
+            <div className="mt-4 mx-4 d-flex justify-content-between">
+                <h2>Permohonan</h2>
+                <img src={document} alt="Document" style={{width:"5%"}} />
+            </div>
         <section className="section dashboard">
             <div className="row m-2">
                 <TotalApplication/>

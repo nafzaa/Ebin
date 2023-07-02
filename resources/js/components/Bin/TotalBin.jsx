@@ -5,6 +5,8 @@ const TotalBin = () => {
     const [totalbin, setTotalbin] = useState(0)
     const [instock, setInstock] = useState(0)
     const [outstock, setOutstock] = useState(0)
+    const [instockUpdatedAt, setinstockUpdatedAt] = useState(0)
+    const [outstockUpdatedAt, setoutstockUpdatedAt] = useState(0)
 
     const GetTotalBin = async(url) => {
             await axios.get(url).then((response)=>{
@@ -25,11 +27,29 @@ const TotalBin = () => {
             setOutstock(response.data)
         }).catch()
     }
+    const GetInStockUpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            console.log(response.data)
+            setinstockUpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetOutStockUpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            console.log(response.data)
+            setoutstockUpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
 
     useEffect(()=>{
         GetTotalBin('/home/bin/count')
         GetInStock('/home/bin/instock/count')
         GetOutStock('/home/bin/outstock/count')
+        GetInStockUpdatedAt('/home/bin/instock/updated_at')
+        GetOutStockUpdatedAt('/home/bin/outstock/updated_at')
     }, [])
 
   return (
@@ -41,7 +61,7 @@ const TotalBin = () => {
         </label>
     </div>
 
-    {/* In Stock */}
+    {/* In Stock Baki */}
     <div className="col-xxl-6 col-md-6">
         <div className="card info-card sales-card">
             <div className="filter">
@@ -80,8 +100,8 @@ const TotalBin = () => {
                 </div>
                 <div className="ps-3">
                 <h6>{instock}</h6>
-                {/* <span className="text-success small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">increase</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{instockUpdatedAt}</span>{""}
                 </div>
             </div>
             </div>
@@ -127,8 +147,8 @@ const TotalBin = () => {
                 </div>
                 <div className="ps-3">
                 <h6>{outstock}</h6>
-                {/* <span className="text-success small pt-1 fw-bold">8%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">increase</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{outstockUpdatedAt}</span>{""}
                 </div>
             </div>
             </div>

@@ -18,6 +18,13 @@ const TotalApplication = () => {
     const [totalApplicationByScheme1UpdatedAt, setTotalapplicationByScheme1UpdatedAt] = useState(0)
     const [totalApplicationByScheme2UpdatedAt, setTotalapplicationByScheme2UpdatedAt] = useState(0)
     const [totalApplicationByScheme3UpdatedAt, setTotalapplicationByScheme3UpdatedAt] = useState(0)
+    const [totalApplicationByPremise1UpdatedAt, setTotalapplicationByPremise1UpdatedAt] = useState(0)
+    const [totalApplicationByPremise2UpdatedAt, setTotalapplicationByPremise2UpdatedAt] = useState(0)
+    const [totalApplicationByPremise3UpdatedAt, setTotalapplicationByPremise3UpdatedAt] = useState(0)
+    const [totalApplicationByKategori1UpdatedAt, setTotalapplicationByKategori1UpdatedAt] = useState(0)
+    const [totalApplicationByKategori2UpdatedAt, setTotalapplicationByKategori2UpdatedAt] = useState(0)
+    const [totalApplicationByKategori3UpdatedAt, setTotalapplicationByKategori3UpdatedAt] = useState(0)
+    const [totalApplicationByKategori4UpdatedAt, setTotalapplicationByKategori4UpdatedAt] = useState(0)
 
     const GetTotalApplication = async(url) => {
         await axios.get(url).then((response)=>{
@@ -125,6 +132,55 @@ const TotalApplication = () => {
             console.log(e)
         })
     }
+    const GetTotalApplicationPremise1UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByPremise1UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetTotalApplicationPremise2UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByPremise2UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetTotalApplicationPremise3UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByPremise3UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetTotalApplicationKategori1UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByKategori1UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetTotalApplicationKategori2UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByKategori2UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetTotalApplicationKategori3UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByKategori3UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetTotalApplicationKategori4UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByKategori4UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
 
     useEffect(()=>{
         GetTotalApplication('/home/application/count')
@@ -145,6 +201,13 @@ const TotalApplication = () => {
         GetTotalApplicationScheme1UpdatedAt('/home/application/scheme1/updated_at')
         GetTotalApplicationScheme2UpdatedAt('/home/application/scheme2/updated_at')
         GetTotalApplicationScheme3UpdatedAt('/home/application/scheme3/updated_at')
+        GetTotalApplicationPremise1UpdatedAt('/home/application/premise1/updated_at')
+        GetTotalApplicationPremise2UpdatedAt('/home/application/premise2/updated_at')
+        GetTotalApplicationPremise3UpdatedAt('/home/application/premise3/updated_at')
+        GetTotalApplicationKategori1UpdatedAt('/home/application/kategori1/updated_at')
+        GetTotalApplicationKategori2UpdatedAt('/home/application/kategori2/updated_at')
+        GetTotalApplicationKategori3UpdatedAt('/home/application/kategori3/updated_at')
+        GetTotalApplicationKategori4UpdatedAt('/home/application/kategori4/updated_at')
     })
 
   return (
@@ -351,8 +414,8 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByPremise1}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByPremise1UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>
@@ -400,15 +463,15 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByPremise2}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByPremise2UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>
         </div>
     </div>
 
-    {/* PREMISE 2 RUMAH KAMPUNG */}
+    {/* PREMISE 3 RUMAH KAMPUNG */}
     <div className="col-xxl-4 col-xl-12">
         <div className="card info-card customers-card">
             <div className="filter">
@@ -449,8 +512,8 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByPremise3}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByPremise3UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>
@@ -499,8 +562,8 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByKategori1}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByKategori1UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>
@@ -547,8 +610,8 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByKategori2}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByKategori2UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>
@@ -595,8 +658,8 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByKategori3}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByKategori3UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>
@@ -643,8 +706,8 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByKategori4}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByKategori4UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>

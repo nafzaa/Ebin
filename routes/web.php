@@ -39,6 +39,9 @@ Route::get('/home', [DashboardController::class, 'index'])->name('home')->middle
 Route::get('/home/bin/count', [DashboardController::class, 'bintotal'])->name('home.bin.total.count')->middleware('auth');
 Route::get('/home/bin/instock/count', [DashboardController::class, 'bininstocktotal'])->name('home.bin.instock.count')->middleware('auth');
 Route::get('/home/bin/outstock/count', [DashboardController::class, 'binoutstocktotal'])->name('home.bin.out.count')->middleware('auth');
+// dashboard - bin - updated_at
+Route::get('/home/bin/instock/updated_at', [DashboardController::class, 'bininstockUpdatedAt'])->name('home.bin.instock.updated_at')->middleware('auth');
+Route::get('/home/bin/outstock/updated_at', [DashboardController::class, 'binoutstockUpdatedAt'])->name('home.bin.outstock.updated_at')->middleware('auth');
 // dashboard - application - count
 Route::get('/home/application/count', [DashboardController::class, 'applicationtotal'])->name('home.bin.total.count')->middleware('auth');
 Route::get('/home/application/scheme1/count', [DashboardController::class, 'applicationtotalbyscheme1'])->name('home.bin.total.scheme1.count')->middleware('auth');
@@ -51,11 +54,18 @@ Route::get('/home/application/kategori1/count', [DashboardController::class, 'ap
 Route::get('/home/application/kategori2/count', [DashboardController::class, 'applicationtotalbykategori2'])->name('home.bin.total.kategori2.count')->middleware('auth');
 Route::get('/home/application/kategori3/count', [DashboardController::class, 'applicationtotalbykategori3'])->name('home.bin.total.kategori3.count')->middleware('auth');
 Route::get('/home/application/kategori4/count', [DashboardController::class, 'applicationtotalbykategori4'])->name('home.bin.total.kategori4.count')->middleware('auth');
-// dashboard - application - created_at
+// dashboard - application - updated_at
 Route::get('/home/application/created_at', [DashboardController::class, 'binTotalCreatedAt'])->name('home.bin.total.created_at')->middleware('auth');
 Route::get('/home/application/scheme1/updated_at', [DashboardController::class, 'applicationbyscheme1UpdatedAt'])->name('home.bin.scheme1.updated_at')->middleware('auth');
 Route::get('/home/application/scheme2/updated_at', [DashboardController::class, 'applicationbyscheme2UpdatedAt'])->name('home.bin.scheme2.updated_at')->middleware('auth');
 Route::get('/home/application/scheme3/updated_at', [DashboardController::class, 'applicationbyscheme3UpdatedAt'])->name('home.bin.scheme3.updated_at')->middleware('auth');
+Route::get('/home/application/premise1/updated_at', [DashboardController::class, 'applicationbypremise1UpdatedAt'])->name('home.bin.premise1.updated_at')->middleware('auth');
+Route::get('/home/application/premise2/updated_at', [DashboardController::class, 'applicationbypremise2UpdatedAt'])->name('home.bin.premise2.updated_at')->middleware('auth');
+Route::get('/home/application/premise3/updated_at', [DashboardController::class, 'applicationbypremise3UpdatedAt'])->name('home.bin.premise3.updated_at')->middleware('auth');
+Route::get('/home/application/kategori1/updated_at', [DashboardController::class, 'applicationbykategori1UpdatedAt'])->name('home.bin.kategori1.updated_at')->middleware('auth');
+Route::get('/home/application/kategori2/updated_at', [DashboardController::class, 'applicationbykategori2UpdatedAt'])->name('home.bin.kategori2.updated_at')->middleware('auth');
+Route::get('/home/application/kategori3/updated_at', [DashboardController::class, 'applicationbykategori3UpdatedAt'])->name('home.bin.kategori3.updated_at')->middleware('auth');
+Route::get('/home/application/kategori4/updated_at', [DashboardController::class, 'applicationbykategori4UpdatedAt'])->name('home.bin.kategori4.updated_at')->middleware('auth');
 
 // application
 Route::get('/application', [ApplicationController::class, 'index'])->name('application')->middleware('auth');

@@ -13,7 +13,6 @@ class DashboardController extends Controller
     {
         return view('pages.dashboard');
     }
-
     public function bintotal()
     {
         $dataBinCount = DataBin::count();
@@ -37,13 +36,36 @@ class DashboardController extends Controller
         $bininstocktotal = DataBin::count() - DataBin::where('status', 2)->count();
         return($bininstocktotal);
     }
+    public function bininstockUpdatedAt()
+    {
+        $dataBinInStockUpdatedAt = DataBin::where('status', 1)->latest()->first();
+        if ($dataBinInStockUpdatedAt) {
+            $latestUpdatedAt = $dataBinInStockUpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
+    }
     public function binoutstocktotal()
     {
         // Status 3 Out Stock
         $binoutstocktotal = DataBin::where('status', 2)->count();
         return($binoutstocktotal);
     }
-
+    public function binoutstockUpdatedAt()
+    {
+        $dataBinOutStockUpdatedAt = DataBin::where('status', 2)->latest()->first();
+        if ($dataBinOutStockUpdatedAt) {
+            $latestUpdatedAt = $dataBinOutStockUpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
+    }
     public function applicationtotal()
     {
         $applicationCount = Application::count();
@@ -109,11 +131,35 @@ class DashboardController extends Controller
         $applicationtotalbypremise1 = Application::where('jenis_premis', 1)->count();
         return $applicationtotalbypremise1;
     }
+    public function applicationbypremise1UpdatedAt()
+    {
+        $applicationPremise1UpdatedAt = Application::where('jenis_premis', 1)->latest()->first();
+        if ($applicationPremise1UpdatedAt) {
+            $latestUpdatedAt = $applicationPremise1UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
+    }
     public function applicationtotalbypremise2()
     {
         // Rumah
         $applicationtotalbypremise2 = Application::where('jenis_premis', 2)->count();
         return $applicationtotalbypremise2;
+    }
+    public function applicationbypremise2UpdatedAt()
+    {
+        $applicationPremise2UpdatedAt = Application::where('jenis_premis', 2)->latest()->first();
+        if ($applicationPremise2UpdatedAt) {
+            $latestUpdatedAt = $applicationPremise2UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
     }
     public function applicationtotalbypremise3()
     {
@@ -121,11 +167,35 @@ class DashboardController extends Controller
         $applicationtotalbypremise3 = Application::where('jenis_premis', 3)->count();
         return $applicationtotalbypremise3;
     }
+    public function applicationbypremise3UpdatedAt()
+    {
+        $applicationPremise3UpdatedAt = Application::where('jenis_premis', 3)->latest()->first();
+        if ($applicationPremise3UpdatedAt) {
+            $latestUpdatedAt = $applicationPremise3UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
+    }
     public function applicationtotalbykategori1()
     {
         // Khidmat Pelanggan (AFSB)
         $applicationtotalbykategori1 = Application::where('kategori_permohonan', 1)->count();
         return $applicationtotalbykategori1;
+    }
+    public function applicationbykategori1UpdatedAt()
+    {
+        $applicationKategori1UpdatedAt = Application::where('kategori_permohonan', 1)->latest()->first();
+        if ($applicationKategori1UpdatedAt) {
+            $latestUpdatedAt = $applicationKategori1UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
     }
     public function applicationtotalbykategori2()
     {
@@ -133,16 +203,52 @@ class DashboardController extends Controller
         $applicationtotalbykategori2 = Application::where('kategori_permohonan', 2)->count();
         return $applicationtotalbykategori2;
     }
+    public function applicationbykategori2UpdatedAt()
+    {
+        $applicationKategori2UpdatedAt = Application::where('kategori_permohonan', 2)->latest()->first();
+        if ($applicationKategori2UpdatedAt) {
+            $latestUpdatedAt = $applicationKategori2UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
+    }
     public function applicationtotalbykategori3()
     {
         // Pelanggan (Walk-In)
         $applicationtotalbykategori3 = Application::where('kategori_permohonan', 3)->count();
         return $applicationtotalbykategori3;
     }
+    public function applicationbykategori3UpdatedAt()
+    {
+        $applicationKategori3UpdatedAt = Application::where('kategori_permohonan', 3)->latest()->first();
+        if ($applicationKategori3UpdatedAt) {
+            $latestUpdatedAt = $applicationKategori3UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
+    }
     public function applicationtotalbykategori4()
     {
         // Semakan Di Lapangan (Tukar Terus)
         $applicationtotalbykategori4 = Application::where('kategori_permohonan', 4)->count();
         return $applicationtotalbykategori4;
+    }
+    public function applicationbykategori4UpdatedAt()
+    {
+        $applicationKategori4UpdatedAt = Application::where('kategori_permohonan', 4)->latest()->first();
+        if ($applicationKategori4UpdatedAt) {
+            $latestUpdatedAt = $applicationKategori4UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
     }
 }
