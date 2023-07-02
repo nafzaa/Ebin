@@ -17,6 +17,7 @@ const TotalApplication = () => {
     const [totalApplicationCreatedAt, setTotalapplicationCreatedAt] = useState(0)
     const [totalApplicationByScheme1UpdatedAt, setTotalapplicationByScheme1UpdatedAt] = useState(0)
     const [totalApplicationByScheme2UpdatedAt, setTotalapplicationByScheme2UpdatedAt] = useState(0)
+    const [totalApplicationByScheme3UpdatedAt, setTotalapplicationByScheme3UpdatedAt] = useState(0)
 
     const GetTotalApplication = async(url) => {
         await axios.get(url).then((response)=>{
@@ -117,6 +118,13 @@ const TotalApplication = () => {
             console.log(e)
         })
     }
+    const GetTotalApplicationScheme3UpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationByScheme3UpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
 
     useEffect(()=>{
         GetTotalApplication('/home/application/count')
@@ -136,6 +144,7 @@ const TotalApplication = () => {
         // GetTotalApplicationCreatedAt('/home/application/created_at')
         GetTotalApplicationScheme1UpdatedAt('/home/application/scheme1/updated_at')
         GetTotalApplicationScheme2UpdatedAt('/home/application/scheme2/updated_at')
+        GetTotalApplicationScheme3UpdatedAt('/home/application/scheme3/updated_at')
     })
 
   return (
@@ -243,8 +252,8 @@ const TotalApplication = () => {
                 </h6>
                 {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
                 <span className="text-muted small pt-2 ps-1">decrease</span> */}
-                <span className="text-muted small pt-2 ps-1">Dikemaskini:</span>
-                <span className="text-danger small pt-1 fw-bold">{totalApplicationByScheme2UpdatedAt}</span>{" "}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByScheme2UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>
@@ -292,8 +301,8 @@ const TotalApplication = () => {
                 <h6>
                     {totalApplicationByScheme3}
                 </h6>
-                {/* <span className="text-danger small pt-1 fw-bold">12%</span>{" "}
-                <span className="text-muted small pt-2 ps-1">decrease</span> */}
+                <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                <span className="text-success small pt-1 fw-bold">{totalApplicationByScheme3UpdatedAt}</span>{" "}
                 </div>
             </div>
             </div>

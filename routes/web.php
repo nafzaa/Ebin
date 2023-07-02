@@ -55,6 +55,7 @@ Route::get('/home/application/kategori4/count', [DashboardController::class, 'ap
 Route::get('/home/application/created_at', [DashboardController::class, 'binTotalCreatedAt'])->name('home.bin.total.created_at')->middleware('auth');
 Route::get('/home/application/scheme1/updated_at', [DashboardController::class, 'applicationbyscheme1UpdatedAt'])->name('home.bin.scheme1.updated_at')->middleware('auth');
 Route::get('/home/application/scheme2/updated_at', [DashboardController::class, 'applicationbyscheme2UpdatedAt'])->name('home.bin.scheme2.updated_at')->middleware('auth');
+Route::get('/home/application/scheme3/updated_at', [DashboardController::class, 'applicationbyscheme3UpdatedAt'])->name('home.bin.scheme3.updated_at')->middleware('auth');
 
 // application
 Route::get('/application', [ApplicationController::class, 'index'])->name('application')->middleware('auth');

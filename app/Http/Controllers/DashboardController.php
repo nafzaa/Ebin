@@ -40,7 +40,7 @@ class DashboardController extends Controller
     public function binoutstocktotal()
     {
         // Status 3 Out Stock
-        $binoutstocktotal = DataBin::where('status', 3)->count();
+        $binoutstocktotal = DataBin::where('status', 2)->count();
         return($binoutstocktotal);
     }
 
@@ -90,6 +90,18 @@ class DashboardController extends Controller
         // PHKT 03
         $applicationtotalbyscheme3 = Application::where('skim', 3)->count();
         return $applicationtotalbyscheme3;
+    }
+    public function applicationbyscheme3UpdatedAt()
+    {
+        $applicationScheme3UpdatedAt = Application::where('skim', 3)->latest()->first();
+        if ($applicationScheme3UpdatedAt) {
+            $latestUpdatedAt = $applicationScheme3UpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
     }
     public function applicationtotalbypremise1()
     {
