@@ -14,42 +14,48 @@ const Dashboard = () => {
     return(
     <div>
         {/* BIN */}
-        <h2>Tong</h2>
-        <section className="section dashboard">
-            <div className="row">
-                <TotalBin/>
+        <div className="card">
+            <div className="m-4">
+                <h2>Tong</h2>
             </div>
-        </section>
+            <section className="section dashboard">
+                <div className="row m-2">
+                    <TotalBin/>
+                </div>
+            </section>
+        </div>
 
         {/* PERMOHONAN */}
-        <h2>Permohonan</h2>
+        <div className="card">
+        <h2 className="m-4">Permohonan</h2>
         <section className="section dashboard">
-            <div className="row">
+            <div className="row m-2">
                 <TotalApplication/>
             </div>
         </section>
+        </div>
 
         {/* DELIVERY */}
-        <h2>Penghantaran</h2>
+        {/* <h2>Penghantaran</h2>
         <section className="section dashboard">
             <div className="row">
-                {/* <Delivering/> */}
+                <Delivering/>
                 <InTransit/>
                 <Returned/>
-                {/* <Pending/> */}
+                <Pending/>
                 <Completed/>
             </div>
-        </section>
+        </section> */}
 
         {/* COST */}
-        <h2>Cost</h2>
+        {/* <h2>Cost</h2>
         <section className="section dashboard">
             <div className="row">
                 <TotalCost/>
                 <DeliveryCost/>
                 <SavingCost/>
             </div>
-        </section>
+        </section> */}
     </div>
     )
 };
