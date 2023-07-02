@@ -40,6 +40,7 @@ Route::get('/home/bin/count', [DashboardController::class, 'bintotal'])->name('h
 Route::get('/home/bin/instock/count', [DashboardController::class, 'bininstocktotal'])->name('home.bin.instock.count')->middleware('auth');
 Route::get('/home/bin/outstock/count', [DashboardController::class, 'binoutstocktotal'])->name('home.bin.out.count')->middleware('auth');
 // dashboard - bin - updated_at
+Route::get('/home/bin/updated_at', [DashboardController::class, 'binUpdatedAt'])->name('home.bin.updated_at')->middleware('auth');
 Route::get('/home/bin/instock/updated_at', [DashboardController::class, 'bininstockUpdatedAt'])->name('home.bin.instock.updated_at')->middleware('auth');
 Route::get('/home/bin/outstock/updated_at', [DashboardController::class, 'binoutstockUpdatedAt'])->name('home.bin.outstock.updated_at')->middleware('auth');
 // dashboard - application - count
@@ -57,7 +58,11 @@ Route::get('/home/application/kategori2/count', [DashboardController::class, 'ap
 Route::get('/home/application/kategori3/count', [DashboardController::class, 'applicationtotalbykategori3'])->name('home.application.total.kategori3.count')->middleware('auth');
 Route::get('/home/application/kategori4/count', [DashboardController::class, 'applicationtotalbykategori4'])->name('home.application.total.kategori4.count')->middleware('auth');
 // dashboard - application - updated_at
-Route::get('/home/application/created_at', [DashboardController::class, 'binTotalCreatedAt'])->name('home.application.total.created_at')->middleware('auth');
+Route::get('/home/application/updated_at', [DashboardController::class, 'applicationTotalUpdatedAt'])->name('home.application.total.updated_at')->middleware('auth');
+
+Route::get('/home/application/delivered/updated_at', [DashboardController::class, 'deliveredUpdatedAt'])->name('home.application.delivered.updated_at')->middleware('auth');
+Route::get('/home/application/dalamproses/updated_at', [DashboardController::class, 'dalamprosesUpdatedAt'])->name('home.application.dalamproses.updated_at')->middleware('auth');
+
 Route::get('/home/application/scheme1/updated_at', [DashboardController::class, 'applicationbyscheme1UpdatedAt'])->name('home.application.scheme1.updated_at')->middleware('auth');
 Route::get('/home/application/scheme2/updated_at', [DashboardController::class, 'applicationbyscheme2UpdatedAt'])->name('home.application.scheme2.updated_at')->middleware('auth');
 Route::get('/home/application/scheme3/updated_at', [DashboardController::class, 'applicationbyscheme3UpdatedAt'])->name('home.application.scheme3.updated_at')->middleware('auth');

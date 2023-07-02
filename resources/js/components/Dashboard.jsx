@@ -30,7 +30,7 @@ const Dashboard = () => {
 
         {/* PERMOHONAN */}
         <div className="card">
-            <div className="mt-4 mx-4 d-flex justify-content-between">
+            <div className="mt-4 mb-4 mx-4 d-flex justify-content-between">
                 <h2>Permohonan</h2>
                 <img src={document} alt="Document" style={{width:"5%"}} />
             </div>

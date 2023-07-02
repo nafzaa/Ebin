@@ -1,5 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import check from '../../../../public/assets/img/check.png'
+import process from '../../../../public/assets/img/process.png'
+import scheme from '../../../../public/assets/img/scheme.png'
+import premise from '../../../../public/assets/img/premise.png'
+import categories from '../../../../public/assets/img/categories.png'
+import sum from '../../../../public/assets/img/sum.png'
 
 const TotalApplication = () => {
     const [totalApplication, setTotalapplication] = useState(0)
@@ -15,8 +21,9 @@ const TotalApplication = () => {
     const [totalApplicationByKategori2, setTotalApplicationByKategori2] = useState(0)
     const [totalApplicationByKategori3, setTotalApplicationByKategori3] = useState(0)
     const [totalApplicationByKategori4, setTotalApplicationByKategori4] = useState(0)
-
-    const [totalApplicationCreatedAt, setTotalapplicationCreatedAt] = useState(0)
+    const [totalApplicationUpdatedAt, setTotalapplicationUpdatedAt] = useState(0)
+    const [berjayaDihantarUpdatedAt, setBerjayaDihantarUpdatedAt] = useState(0)
+    const [dalamProsesUpdatedAt, setDalamProsesUpdatedAt] = useState(0)
     const [totalApplicationByScheme1UpdatedAt, setTotalapplicationByScheme1UpdatedAt] = useState(0)
     const [totalApplicationByScheme2UpdatedAt, setTotalapplicationByScheme2UpdatedAt] = useState(0)
     const [totalApplicationByScheme3UpdatedAt, setTotalapplicationByScheme3UpdatedAt] = useState(0)
@@ -115,14 +122,23 @@ const TotalApplication = () => {
             console.log(e)
         })
     }
-
-    // const GetTotalApplicationCreatedAt = async(url) => {
-    //     await axios.get(url).then((response)=>{
-    //         setTotalapplicationCreatedAt(response.data)
-    //     }).catch((e)=>{
-    //         console.log(e)
-    //     })
-    // }
+    const GetTotalApplicationUpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setTotalapplicationUpdatedAt(response.data)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    }
+    const GetBerjayaDihantarUpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setBerjayaDihantarUpdatedAt(response.data)
+        })
+    }
+    const GetDalamProsesUpdatedAt = async(url) => {
+        await axios.get(url).then((response)=>{
+            setDalamProsesUpdatedAt(response.data)
+        })
+    }
     const GetTotalApplicationScheme1UpdatedAt = async(url) => {
         await axios.get(url).then((response)=>{
             setTotalapplicationByScheme1UpdatedAt(response.data)
@@ -211,7 +227,9 @@ const TotalApplication = () => {
         GetTotalApplicationByKategori3('/home/application/kategori3/count')
         GetTotalApplicationByKategori4('/home/application/kategori4/count')
 
-        // GetTotalApplicationCreatedAt('/home/application/created_at')
+        GetTotalApplicationUpdatedAt('/home/application/updated_at')
+        GetBerjayaDihantarUpdatedAt('/home/application/delivered/updated_at')
+        GetDalamProsesUpdatedAt('/home/application/dalamproses/updated_at')
         GetTotalApplicationScheme1UpdatedAt('/home/application/scheme1/updated_at')
         GetTotalApplicationScheme2UpdatedAt('/home/application/scheme2/updated_at')
         GetTotalApplicationScheme3UpdatedAt('/home/application/scheme3/updated_at')
@@ -226,26 +244,158 @@ const TotalApplication = () => {
 
   return (
     <>
-    {/* Total */}
-    <div className="row">
-        <label>
-            <h5 className="card-title">
-                Total {/* <span>| Tahun Ini</span> */}: {totalApplication}
-                {/* ({totalApplicationCreatedAt}) */}
-            </h5>
-            <h5 className="card-title">
-                Selesai : {berjayaDihantar}
-            </h5>
-            <h5 className="card-title">
-                Dalam Proses : {dalamProses}
-            </h5>
-        </label>
-    </div>
+        {/* Total */}
+        <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card sales-card">
+                <div className="filter">
+                {/* <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <i className="bi bi-three-dots" />
+                </a> */}
+                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li className="dropdown-header text-start">
+                    <h6>Filter</h6>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Hari Ini
+                    </a>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Bulan Ini
+                    </a>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Tahun Ini
+                    </a>
+                    </li>
+                </ul>
+                </div>
+                <div className="card-body">
+                <h5 className="card-title">
+                    Total
+                    {/* <span>| Tahun Ini</span> */}
+                </h5>
+                <div className="d-flex align-items-center">
+                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i className="bi" />
+                    <img src={sum} style={{width:"60%"}} />
+                    </div>
+                    <div className="ps-3">
+                    <h6>
+                        {totalApplication}
+                    </h6>
+                    <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                    <span className="text-success small pt-1 fw-bold">{totalApplicationUpdatedAt}</span>{" "}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        {/* Selesai */}
+        <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card revenue-card">
+                <div className="filter">
+                {/* <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <i className="bi bi-three-dots" />
+                </a> */}
+                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li className="dropdown-header text-start">
+                    <h6>Filter</h6>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Hari Ini
+                    </a>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Bulan Ini
+                    </a>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Tahun Ini
+                    </a>
+                    </li>
+                </ul>
+                </div>
+                <div className="card-body">
+                <h5 className="card-title">
+                    Selesai
+                    {/* <span>| Tahun Ini</span> */}
+                </h5>
+                <div className="d-flex align-items-center">
+                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i className="bi" />
+                    <img src={check} style={{width:"90%"}} />
+                    </div>
+                    <div className="ps-3">
+                    <h6>
+                        {berjayaDihantar}
+                    </h6>
+                    <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                    <span className="text-success small pt-1 fw-bold">{berjayaDihantarUpdatedAt}</span>{" "}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        {/* Dalam Proses */}
+        <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+                <div className="filter">
+                {/* <a className="icon" href="#" data-bs-toggle="dropdown">
+                    <i className="bi bi-three-dots" />
+                </a> */}
+                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li className="dropdown-header text-start">
+                    <h6>Filter</h6>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Hari Ini
+                    </a>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Bulan Ini
+                    </a>
+                    </li>
+                    <li>
+                    <a className="dropdown-item" href="#">
+                        Tahun Ini
+                    </a>
+                    </li>
+                </ul>
+                </div>
+                <div className="card-body">
+                <h5 className="card-title">
+                    Dalam Proses
+                    {/* <span>| Tahun Ini</span> */}
+                </h5>
+                <div className="d-flex align-items-center">
+                    <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i className="bi" />
+                    <img src={process} style={{width:"70%"}} />
+                    </div>
+                    <div className="ps-3">
+                    <h6>
+                        {dalamProses}
+                    </h6>
+                    <span className="text-muted small pt-2 ps-1">Dikemaskini: </span>
+                    <span className="text-success small pt-1 fw-bold">{dalamProsesUpdatedAt}</span>{" "}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     
     <h5 className="card-title text-center">SKIM</h5>
     {/* SCHEME 1 PHKT01 */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card revenue-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -279,6 +429,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={scheme} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -294,7 +445,7 @@ const TotalApplication = () => {
 
     {/* SCHEME 2 PHKT02 */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card revenue-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -328,6 +479,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={scheme} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -345,7 +497,7 @@ const TotalApplication = () => {
 
     {/* SCHEME 3 PHKT03 */}
     <div className="col-xxl-4 col-xl-12">
-        <div className="card info-card revenue-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -379,6 +531,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={scheme} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -429,6 +582,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={premise} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -478,6 +632,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={premise} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -527,6 +682,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={premise} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -543,7 +699,7 @@ const TotalApplication = () => {
     <h5 className="card-title text-center">KATEGORI</h5>
     {/* KATEGORI 1 KHIDMAT PELANGGAN (AFSB) */}
     <div className="col-xxl-6 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -577,6 +733,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={categories} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -591,7 +748,7 @@ const TotalApplication = () => {
     </div>
     {/* KATEGORI 2 OPERASI */}
     <div className="col-xxl-6 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -625,6 +782,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={categories} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -639,7 +797,7 @@ const TotalApplication = () => {
     </div>
     {/* KATEGORI 3 PELANGGAN (WALK-IN) */}
     <div className="col-xxl-6 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -673,6 +831,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={categories} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>
@@ -687,7 +846,7 @@ const TotalApplication = () => {
     </div>
     {/* KATEGORI 4 SEMAKAN DI LAPANGAN (TUKAR TERUS) */}
     <div className="col-xxl-6 col-xl-12">
-        <div className="card info-card customers-card">
+        <div className="card info-card sales-card">
             <div className="filter">
             {/* <a className="icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-three-dots" />
@@ -721,6 +880,7 @@ const TotalApplication = () => {
             <div className="d-flex align-items-center">
                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i className="bi bi-file-text" />
+                <img src={categories} style={{width:"30%"}} />
                 </div>
                 <div className="ps-3">
                 <h6>

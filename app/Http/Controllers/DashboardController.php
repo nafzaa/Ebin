@@ -18,12 +18,24 @@ class DashboardController extends Controller
         $dataBinCount = DataBin::count();
         return($dataBinCount);
     }
-    public function binTotalCreatedAt()
+    public function binUpdatedAt()
     {
-        $dataBinCreatedAt = DataBin::latest()->first();
-        if ($dataBinCreatedAt) {
-            $latestCreatedAt = $dataBinCreatedAt->created_at;
-            $dateTime = Carbon::parse($latestCreatedAt);
+        $dataBin = DataBin::latest()->first();
+        if ($dataBin) {
+            $latestUpdatedAt = $dataBin->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;    
+        }else {
+            return "Tiada Rekod";
+        }
+    }
+    public function applicationTotalUpdatedAt()
+    {
+        $applicationTotalUpdatedAt = Application::latest()->first();
+        if ($applicationTotalUpdatedAt) {
+            $latestUpdatedAt = $applicationTotalUpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
             $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
             return $formattedDateTime;
         }else {
@@ -75,6 +87,30 @@ class DashboardController extends Controller
     {
         $deliveredCount = Application::where('status_penerimaan', 1)->count();
         return $deliveredCount;
+    }
+    public function deliveredUpdatedAt()
+    {
+        $deliveredUpdatedAt = Application::where('status_penerimaan', 1)->latest()->first();
+        if ($deliveredUpdatedAt) {
+            $latestUpdatedAt = $deliveredUpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
+    }
+    public function dalamprosesUpdatedAt()
+    {
+        $deliveredUpdatedAt = Application::whereNot('status_penerimaan', 1)->latest()->first();
+        if ($deliveredUpdatedAt) {
+            $latestUpdatedAt = $deliveredUpdatedAt->updated_at;
+            $dateTime = Carbon::parse($latestUpdatedAt);
+            $formattedDateTime = $dateTime->format('Y-m-d H:i:s');
+            return $formattedDateTime;
+        }else {
+            return "Tiada Rekod";
+        }
     }
     public function dalamproses()
     {
