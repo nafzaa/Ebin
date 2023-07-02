@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class DeliveryBin extends Component
 {
-    public $statePage = 2;
+    public $statePage = 0;
 
     public $nama_pekerja;
     public $no_pekerja;
